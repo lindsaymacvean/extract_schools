@@ -32,7 +32,9 @@ for airport in airports:
         # Get the distance to the current airport
         distance_result = gmaps.distance_matrix(address, airport)
         # Extract the distance in km
-        distance = distance_result['rows'][0]['elements'][0]['distance']['text']
+        distance_text = distance_result['rows'][0]['elements'][0]['distance']['text']
+        # Remove " km" and convert to float
+        distance = float(distance_text.replace(' km', ''))
         # Append the distance to the list for the current airport
         distances[airport].append(distance)
         print(f'Distance to {airport} calculated for {address}.')

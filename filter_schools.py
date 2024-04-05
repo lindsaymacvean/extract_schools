@@ -13,9 +13,6 @@ for airport in airports:
 # Filter the DataFrame
 df = df[df.apply(lambda row: any(row[f'Distance to {airport}'] <= 50 for airport in airports), axis=1)]
 
-# Remove semicolons from the "Number of pupils" column
-df['Number of pupils'] = df['Number of pupils'].str.replace(';', '').astype(int)
-
 # Write the filtered DataFrame back to the spreadsheet
 df.to_excel('filtered_schools.xlsx', index=False)
 
